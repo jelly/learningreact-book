@@ -21,8 +21,15 @@ A React element is a description of what a DOM element should look like.
 
 ```javascript
 React.createElement("h1", null, "Title");
-
 React.createElement("h1", {id: "title", data-type: "title"}, "Title");
 ```
 
 ## ReactDOM
+
+The ReactDOM contains all the tools to geenrate HTML from the virtual DOM. Rendering a React element including it's
+children to the DOM can be done using ReactDOM.render.
+
+```javascript
+const elem = React.createElement("h1", null, "Title");
+ReactDOM.render(elem, document.getElementedById('react-container'));
+```
