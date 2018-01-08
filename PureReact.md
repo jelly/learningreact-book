@@ -48,4 +48,4 @@ const elem = React.createElement(
 );
 ```
 
-The elem object wil have a 'props.children' property which is an array of React elements.
+The elem object will have a 'props.children' property which is an array of React elements.
