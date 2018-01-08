@@ -33,3 +33,19 @@ children to the DOM can be done using ReactDOM.render.
 const elem = React.createElement("h1", null, "Title");
 ReactDOM.render(elem, document.getElementedById('react-container'));
 ```
+
+## Children
+
+A React element can have children by passing the children as third argument to React.createElement.
+
+```javascript
+const elem = React.createElement(
+		"ul",
+		null,
+		React.createElement("li", null, "One"),
+		React.createElement("li", null, "Two"),
+		React.createElement("li", null, "Three")
+);
+```
+
+The elem object wil have a 'props.children' property which is an array of React elements.
