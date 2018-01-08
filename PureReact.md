@@ -30,8 +30,8 @@ The ReactDOM contains all the tools to geenrate HTML from the virtual DOM. Rende
 children to the DOM can be done using ReactDOM.render.
 
 ```javascript
-const elem = React.createElement("h1", null, "Title");
-ReactDOM.render(elem, document.getElementedById('react-container'));
+const elem = React.createElement("h1", null, "Title")
+ReactDOM.render(elem, document.getElementedById('react-container'))
 ```
 
 ## Children
@@ -45,7 +45,54 @@ const elem = React.createElement(
 		React.createElement("li", null, "One"),
 		React.createElement("li", null, "Two"),
 		React.createElement("li", null, "Three")
-);
+)
 ```
 
 The elem object will have a 'props.children' property which is an array of React elements.
+
+## React Components
+
+React Components are re-usable DOM structures of a user interface, they may take different data.
+
+## React.createClass
+
+Although React.createClass is indicated as deprecated some projects might still use it, the new method is using ES 6
+classes and extending React.Component. With React.createClass we can create a re-usable React component.
+
+```javascript
+const mylist = React.createClass({
+		displayName: "myList",
+		render() {
+			return React.createElement("ul", {className: "mylist"},
+					this.props.items.map((item, i) =>
+						React.createElement("li", { key: i }, item)
+					)
+			)
+		}
+})
+const items = ['One', 'Two', 'Three']
+ReactDOM.render(
+	React.createElement(mylist, {items}, null),
+	document.getElementById('react-container')
+)
+```
+
+Or as ES 6 Class (recommended).
+
+```javascript
+class mylist extends React.Component {
+  constructor(props) {
+  	super(props);
+  }
+  render() {
+   	return React.createElement("ul", {className: "mylist"},
+					this.props.items.map((item, i) =>
+						React.createElement("li", { key: i }, item)
+					)
+			)
+
+  }
+}
+```
+
+## Stateless Functional Components
