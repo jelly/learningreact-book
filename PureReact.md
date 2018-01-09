@@ -110,3 +110,9 @@ const mylist = ({items}) =>
     )
  )
 ```
+
+## DOM Rendering
+
+ReactDOM.render renders the UI efficiently every time we change the state, it will always try to keep DOM insertions at a
+minimum since these are quite costly. ReactDOM will try to make changes by updating DOM elements instead of removing for
+example li's in an ul and insertion new li's, it will update the already drawn li's.
