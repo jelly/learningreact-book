@@ -96,3 +96,17 @@ class mylist extends React.Component {
 ```
 
 ## Stateless Functional Components
+
+Stateless functional components are functions that take in properties and return a DOM element. When creating such a
+component you should strive to make such a component a pure function, they should take in props and return a DOM element
+without side effects. If you need to encapsulate functionality or have a this scope, you can't use a stateless
+functional component.
+
+```javascript
+const mylist = ({items}) =>
+  React.createElement("ul", {className: "mylist"},
+    items.map((item, i) =>
+      React.createElement("li", {key: i}, item);
+    )
+ )
+```
