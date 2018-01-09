@@ -137,3 +137,41 @@ const mylist = React.DOM.ul(
 ```
 
 ## React Element as JSX
+
+JSX is a way to describe complex DOM trees with attributes, more readable then HTML or XML. In JSX an element's type is
+specified with a tag. The tag's attributes represent the properties, the element's children can be added between the
+opening and closing tags. JSX also works with components, simply define the component using the class name. Passing an
+array to the component can be done by surrounding it with curly braces which is called a JavaScript expression.
+Component properties will take two types: either a string or a JavaScript expression which can include arrays, objects
+and even functions.
+
+Nested components
+```javascript
+<UserList>
+  <User />
+  <User />
+</UserList>
+```
+
+className is used to define the class attribute
+```javascript
+<h1 className="react">Title</h1>
+```
+
+JavaScript Expressions
+```javascript
+<h1>{this.props.title}</h1>
+<input type="checkbox" defaultChecked={false} />
+```
+
+Evaluation - the JavaScript added in between the curly braces will get evaluted.
+```javascript
+<h1>{this.props.title.toLowerCase().replace}</h1>
+```
+Mapping arrays to JSX
+```javascript
+<ul>
+  {this.props.items.map((item, i) =>
+    <li key={i}>{item}</li>
+</ul>
+```
