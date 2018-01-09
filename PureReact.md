@@ -116,3 +116,24 @@ const mylist = ({items}) =>
 ReactDOM.render renders the UI efficiently every time we change the state, it will always try to keep DOM insertions at a
 minimum since these are quite costly. ReactDOM will try to make changes by updating DOM elements instead of removing for
 example li's in an ul and insertion new li's, it will update the already drawn li's.
+
+## Factories
+
+A factory is a special object which can be used to abstract away the details of instantiating objects. In React
+favorites are used to help us create React element instances. React has built-in factories for all commonly supported
+HTML and SVG DOM elements and you can use React.createFactory to create your own. For example for a creating a heading
+React has a factory.
+
+```javascript
+React.DOM.h1(null, "My Title")
+
+const items = ['One', 'Two', 'Three']
+const mylist = React.DOM.ul(
+  { className: "mylist" },
+  items.map((item, key) =>
+    React.DOM.li({key}, item)
+  )
+)
+```
+
+## React Element as JSX
