@@ -175,3 +175,69 @@ Mapping arrays to JSX
     <li key={i}>{item}</li>
 </ul>
 ```
+
+## Property Validation
+
+React has built-in automatic property validation for the variable types for a component:
+
+| Type      | Validator
+|-----------|-----------------
+| Arrays    | React.PropTypes.array
+| Boolean   | React.PropTypes.bool
+| Functions | React.PropTypes.func
+| Numbers   | React.PropTypes.number
+| Objects   | React.PropTypes.object
+| Strings   | React.PropTypes.string
+
+propTypes can be defined for a class as following:
+
+```javascript
+mylist.propTypes = {
+   list: PropTypes.array.isRequired
+};
+```
+
+A warning is thrown when the wrong type is passed.
+
+### Default Props
+
+Default properties can be defined for a component.
+
+```javascript
+class ReviewsList extends Component {
+  static propTypes = {
+     reviews : PropTypes.array.isRequired,
+  };
+  static defaultProps = {
+     reviews: [],
+  };
+  render() {
+    var reviewItems = this.props.reviews.map(function (review) {  // ERROR
+      return (
+        <RecipeReviewItem key={review.objectId} reviewText={review.reviewText}></RecipeReviewItem>
+      )
+    });
+
+    return (
+      <View>{reviewItems}</View>
+    );
+  }
+}
+```
+
+### Custom Property Validation
+
+Custom validation in React is implemented with a function. This function should either return an
+error when a specific validation requirement is not met or null when the property is valid.
+
+```javascript
+propTypes = {
+	subject: (props, propName) =>
+		(typeof props[propName] !== 'string') ? new Error('Must be a string') :
+			(props[propName].length > 10) ? new Error('Too large') :
+				null
+}
+```
+
+## ES6 Classes and Stateless Functional Components
+
