@@ -239,5 +239,49 @@ propTypes = {
 }
 ```
 
-## ES6 Classes and Stateless Functional Components
+## Refs
 
+A ref is an identifier that React uses to reference DOM elements.
+
+```javascript
+class SillyForm extends Component {
+  constructor(props) {
+   super(props)
+   this.submit = this.submit.bind(this)
+  }
+
+  submit(e) {
+    const { _title, _thing } = this.refs
+    e.preventDefault()
+    // Do something with submitted data
+
+    // Resset
+    _title.value = ''
+    _thing.value = ''
+    _title.focus()
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.submit}>
+        <input ref="_title" type="text" required/>
+        <input ref="_thing" type="text" required/>
+	<button>Submit</button>
+      </form>
+    );
+  }
+}
+```
+
+## Inverse Data Flow
+
+A common solution for collecting data from a React component, pass a callback function to the
+component as property that the component can use to pass data back as arguments. It's called inverse
+data flow becase the component sends data back from the component.
+
+```javascript
+const logThing = (title, thing) =>
+  console.log(`${title} - ${thing}`)
+
+<ThingForm onNewThing={logThing} />
+```
