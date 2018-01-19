@@ -285,3 +285,22 @@ const logThing = (title, thing) =>
 
 <ThingForm onNewThing={logThing} />
 ```
+
+## React State Management
+
+Properties are immutable in React components, once rendered the component's properties do not
+change. React state is a built-in option for managing data that whill change within a component.
+State in React can be expressed in React components with a single JavaScript object.
+
+### Component State
+
+A component can have a state in React implemented as following:
+
+```javascript
+class Counter extends Component {
+  constructor(props) {
+    super(props)
+  }
+  }
+}
+```
