@@ -297,10 +297,31 @@ State in React can be expressed in React components with a single JavaScript obj
 A component can have a state in React implemented as following:
 
 ```javascript
-class Counter extends Component {
+const Counter = class Counter extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+			count: 0
+		}
   }
+
+	change(count) {
+    this.setState({count})
   }
+
+	render() {
+    const {count} = this.state
+		return (
+			<div>
+							<button onClick={this.change.bind(this, count+1)}>Click</button>
+							<p>Count: {count}</p>
+			</div>
+		)
+	}
 }
 ```
+
+When an ES6 component is mounted, its constructor is invoked with the properties injected as the
+first arguments. They are sent to the superclass by invoking super, which is in the example
+React.Component. React.Component decoreates the Component with functionality that includes state
+management, after invoking super the state can be initalized.
